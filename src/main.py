@@ -11,7 +11,7 @@ from typing import Sequence
 import yaml
 
 from .archive import RawArchive
-from .collectors import BCGIRCollector, BCGLandIRCollector
+from .collectors import BCGIRCollector, BCGLandIRCollector, HNXCollector, HOSECollector, SSCCollector
 from .http_client import HTTPClient, HTTPConfig
 from .models import CollectorResult, CollectorStatus
 
@@ -31,6 +31,12 @@ def build_collectors(config: dict, http: HTTPClient) -> list:
         collectors.append(BCGIRCollector(http, source_config["bcg_ir"]))
     if source_config.get("bcg_land_ir", {}).get("enabled", False):
         collectors.append(BCGLandIRCollector(http, source_config["bcg_land_ir"]))
+    if source_config.get("hnx", {}).get("enabled", False):
+        collectors.append(HNXCollector(http, source_config["hnx"]))
+    if source_config.get("hose", {}).get("enabled", False):
+        collectors.append(HOSECollector(http, source_config["hose"]))
+    if source_config.get("ssc", {}).get("enabled", False):
+        collectors.append(SSCCollector(http, source_config["ssc"]))
     return collectors
 
 
