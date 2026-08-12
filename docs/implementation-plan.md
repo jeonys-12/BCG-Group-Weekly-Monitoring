@@ -4,6 +4,8 @@
 
 Phase 3 acceptance is therefore limited to confirming that no exchange/regulator collector, endpoint, fixture, live test, or CLI integration is present and that Phase 1 Excel and Phase 2 IR behavior remain unchanged.
 
+> **Operating decision (2026-08-12):** The owner's PC and Windows Task Scheduler are the initial Phase 6 deployment target. It runs Monday at 07:00 local time, uses the prior completed Monday-Sunday window, and writes to a user-selected local folder. GitHub Actions remains a later optional deployment alternative.
+
 ## Phase 1 — Excel report engine
 
 Deliver repository scaffold, immutable-template rules, analyzer, conservative writer, three-record dummy input, and integrity tests.

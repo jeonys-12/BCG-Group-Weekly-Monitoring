@@ -96,3 +96,29 @@ Phases 2-5 will feed normalized, traceable monitoring records to this engine. Ph
 `src/http_client.py` retries only idempotent GET requests for transient network errors, HTTP 429, and selected 5xx responses. `src/archive.py` stores response bytes plus URL, method, status, timestamp, content type, encoding, length, and SHA-256 without request cookies or authorization data. `src/collectors/bcg_ir.py` parses the server-rendered BCG list, detail body, and attachments. `src/collectors/bcg_land_ir.py` validates the public shell and calls its year-specific AJAX HTML-fragment endpoint with `X-Requested-With: XMLHttpRequest`.
 
 Both collectors emit the common contract in `src/models.py` through `src/normalize.py`. Collection timestamps are excluded from record identity, so the same official item receives the same ID on repeat runs. Phase 2 stops at normalized JSON and does not invoke the Excel writer.
+
+## Local weekly operation
+
+Windows Task Scheduler is the first operational deployment target. It runs `scripts/run_weekly.ps1` every Monday and the Python coordinator reports the last fully completed Monday-Sunday period.
+
+    Windows Task Scheduler (Monday 07:00 local)
+                    |
+                    v
+         scripts/run_weekly.ps1 + log
+                    |
+                    v
+          BCG IR + BCG Land IR collection
+              |                 |
+              v                 v
+        raw response archive  normalized records
+                    \          /
+                     v        v
+              src/weekly_report.py
+                    |
+                    v
+          append-only Excel writer -> unique XLSX
+                    |
+                    v
+        reopen check + weekly JSON metadata
+
+Only BCG IR and BCG Land IR enter this pipeline. HNX, HOSE, and SSC are rejected as sources. Source-derived text is used without invented translation or analysis, and the original URL becomes a hyperlink in the summary cell. Exact deterministic IDs are suppressed only within a collection result; broader cross-run/fuzzy deduplication remains a later-phase concern. If both sources fail, metadata is retained and Excel publication is blocked. A successful zero-item week still produces a dated workbook without inserted rows.
