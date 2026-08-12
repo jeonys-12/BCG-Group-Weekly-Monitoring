@@ -1,5 +1,9 @@
 # Implementation plan
 
+> **Scope decision (2026-08-12):** HNX, HOSE, and SSC monitoring is excluded. This decision supersedes the Phase 3 exchange/regulator section below. Do not implement or enable those collectors. Preserve the existing HNX/HOSE/SSC institution-note rows in the Excel template because they are report layout content. The active collection scope remains BCG IR and BCG Land IR.
+
+Phase 3 acceptance is therefore limited to confirming that no exchange/regulator collector, endpoint, fixture, live test, or CLI integration is present and that Phase 1 Excel and Phase 2 IR behavior remain unchanged.
+
 ## Phase 1 — Excel report engine
 
 Deliver repository scaffold, immutable-template rules, analyzer, conservative writer, three-record dummy input, and integrity tests.
