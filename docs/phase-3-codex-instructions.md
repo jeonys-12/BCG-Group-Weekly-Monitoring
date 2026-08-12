@@ -1,5 +1,7 @@
 # Phase 3 Codex 작업지시서
 
+> **상태: 폐기됨(Superseded).** 2026-08-12 프로젝트 소유자 결정으로 HNX, HOSE, SSC 모니터링은 구현 범위에서 제외됐다. 아래의 collector 구현 지시는 실행하지 않는다. 기존 Excel template의 HNX/HOSE/SSC 기관 설명행은 보고서 레이아웃의 일부이므로 삭제하거나 변경하지 않는다. 현재 허용된 수집 범위는 Phase 2의 BCG IR 및 BCG Land IR이다.
+
 ## 1. 작업 목적
 
 Phase 2에서 구축한 공통 HTTP, raw archive, normalize, deterministic ID, collector result 기반을 그대로 사용하여 다음 공식 기관의 공시 수집기를 구현한다.

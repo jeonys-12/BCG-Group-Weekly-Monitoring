@@ -153,7 +153,6 @@ def build_record(
     document_number: str | None = None,
     attachments: list[Attachment] | tuple[Attachment, ...] = (),
     collected_at: datetime | None = None,
-    source_type: str = "OFFICIAL_IR",
 ) -> NormalizedRecord:
     timestamp = collected_at or utc_now()
     if timestamp.tzinfo is None:
@@ -199,7 +198,7 @@ def build_record(
         collected_date=timestamp.date().isoformat(),
         company=normalized_company,
         source=normalized_source,
-        source_type=normalize_title(source_type),
+        source_type="OFFICIAL_IR",
         title_original=normalized_title,
         title_ko=None,
         content_original=normalize_body(content_original),

@@ -19,26 +19,3 @@ sources:
     disclosure_url: "https://www.bcgland.com.vn/vi/quan-he-dau-tu/cong-bo-thong-tin"
     disclosure_year_url_template: "https://www.bcgland.com.vn/vi/quan-he-dau-tu/cong-bo-thong-tin/{year}"
     max_pages: 10
-  hnx:
-    enabled: true
-    base_url: "https://www.hnx.vn"
-    issuer_page_template: "https://www.hnx.vn/vi-vn/m-tim-kiem-{ticker}.html"
-    disclosure_page_path: "/ModuleMobile/MobileIssuer/ChangePageTCB"
-    tickers: ["BCG", "BCR"]
-    max_pages: 10
-  hose:
-    enabled: true
-    base_url: "https://www.hsx.vn"
-    api_base_url: "https://api.hsx.vn/n/api/v1"
-    disclosure_path: "/news/cate"
-    category_alias: "thong-tin-cong-bo"
-    tickers: ["BCG"]
-    page_size: 20
-    max_pages: 10
-  ssc:
-    enabled: true
-    base_url: "https://ssc.gov.vn"
-    list_url: "https://ssc.gov.vn/webcenter/portal/ubck/pages_r/l/tintuc"
-    detail_path: "/webcenter/portal/ubck/pages_r/l/chitit"
-    entities: ["BCG", "Bamboo Capital", "BCG Land"]
-    max_pages: 10

@@ -106,19 +106,6 @@ class HTTPClient:
             )
         return response
 
-    def post_form(self, url: str, *, data: Mapping[str, str], headers: Mapping[str, str] | None = None, archive_source: str | None = None) -> requests.Response:
-        """Send one non-retried form POST for HNX read-only pagination."""
-        self._pace()
-        try:
-            response = self.session.post(url, data=dict(data), headers=dict(headers or {}), timeout=(self.config.connect_timeout_seconds, self.config.read_timeout_seconds))
-        except requests.RequestException as exc:
-            if self.archive is not None and archive_source:
-                self.archive.save(source=archive_source, url=url, method="POST", status=None, body=b"", error=f"{type(exc).__name__}: {exc}")
-            raise
-        if self.archive is not None and archive_source:
-            self.archive.save(source=archive_source, url=response.url, method="POST", status=response.status_code, body=response.content, response_headers=response.headers, encoding=response.encoding)
-        return response
-
     def _pace(self) -> None:
         now = self.clock()
         if self._last_request_at is not None:

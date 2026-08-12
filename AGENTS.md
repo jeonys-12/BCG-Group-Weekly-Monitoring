@@ -19,3 +19,4 @@ These rules apply to the entire repository.
 15. Treat list/schema failures as explicit collector errors. Never convert a parsing failure into a successful empty result.
 16. Unit tests must use fixed local fixtures and make zero live network calls. Mark optional live smoke checks separately.
 17. Normalized IDs must be deterministic and must not depend on collection time, page position, or local file paths.
+18. HNX, HOSE, and SSC monitoring is excluded by project-owner decision. Do not add or enable exchange/regulator collectors, endpoints, fixtures, live checks, or CLI integration unless the owner explicitly reverses this decision. Existing HNX/HOSE/SSC institution-note rows in the Excel template are layout content and must remain unchanged.
