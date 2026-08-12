@@ -6,3 +6,10 @@ reports/output/*.xlsx
 reports/output/*.xlsm
 !reports/output/.gitkeep
 work/
+logs/
+data/raw/**
+!data/raw/.gitkeep
+data/processed/**
+!data/processed/.gitkeep
+data/history/**
+!data/history/.gitkeep

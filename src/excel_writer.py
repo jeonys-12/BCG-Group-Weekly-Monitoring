@@ -151,6 +151,7 @@ def append_trends(
     rules: dict[str, Any],
     report_start: date | None = None,
     report_end: date | None = None,
+    allow_empty: bool = False,
 ) -> Path:
     """Insert new trends while leaving historical cells untouched."""
     template_path = template_path.resolve()
@@ -163,7 +164,7 @@ def append_trends(
         raise ValueError("Template must be .xlsx or .xlsm")
 
     normalized = [item if isinstance(item, TrendItem) else TrendItem.from_mapping(item) for item in items]
-    if not normalized:
+    if not normalized and not allow_empty:
         raise ValueError("At least one new trend item is required")
     normalized.sort(key=lambda item: item.published_date)
 
@@ -175,10 +176,12 @@ def append_trends(
     ws = wb[sheet_name]
     insertion_row, source_row, _ = _locate_anchors(ws, rules)
     amount = len(normalized)
-    original_max_row = ws.max_row
-    source_merges = _shift_merges(ws, insertion_row, amount)
-    _shift_row_dimensions(ws, insertion_row, amount, original_max_row)
-    ws.insert_rows(insertion_row, amount)
+    source_merges: list[CellRange] = []
+    if amount:
+        original_max_row = ws.max_row
+        source_merges = _shift_merges(ws, insertion_row, amount)
+        _shift_row_dimensions(ws, insertion_row, amount, original_max_row)
+        ws.insert_rows(insertion_row, amount)
 
     for offset, item in enumerate(normalized):
         row = insertion_row + offset
@@ -187,6 +190,8 @@ def append_trends(
         ws.cell(row, 2, item.source)
         ws.cell(row, 3, item.summary_ko)
         ws.cell(row, 4, item.note)
+        if item.url:
+            ws.cell(row, 3).hyperlink = item.url
         for merged in source_merges:
             translated = CellRange(
                 min_col=merged.min_col,

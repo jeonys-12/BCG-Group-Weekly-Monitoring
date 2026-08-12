@@ -4,7 +4,7 @@ These rules apply to the entire repository.
 
 1. Implement only the requested phase. Do not add collectors, AI classification, or scraping during Phase 1.
 2. Treat every workbook in `reports/template/` as immutable input. Never save over a master template.
-3. Write generated workbooks only to `reports/output/`, using a new filename.
+3. Write generated workbooks only to `reports/output/` or an owner-approved runtime output folder, always using a new filename.
 4. Preserve all historical cell values, formulas, styles, merges, dimensions, print settings, and workbook metadata unless a requirement explicitly targets them.
 5. Insert trend rows immediately before the HNX/HOSE/SSC institution-note block. If anchors are missing or ambiguous, fail loudly instead of guessing.
 6. Keep workbook layout anchors in `config/report_rules.yaml`; do not scatter row or cell coordinates through code.
@@ -20,3 +20,4 @@ These rules apply to the entire repository.
 16. Unit tests must use fixed local fixtures and make zero live network calls. Mark optional live smoke checks separately.
 17. Normalized IDs must be deterministic and must not depend on collection time, page position, or local file paths.
 18. HNX, HOSE, and SSC monitoring is excluded by project-owner decision. Do not add or enable exchange/regulator collectors, endpoints, fixtures, live checks, or CLI integration unless the owner explicitly reverses this decision. Existing HNX/HOSE/SSC institution-note rows in the Excel template are layout content and must remain unchanged.
+19. For the approved weekly local automation, this rule supersedes Rule 13 only for connecting BCG IR and BCG Land IR to the append-only Excel writer. It must not add translation, classification, generated summaries, or impact conclusions; use source-derived titles and preserve URLs.
