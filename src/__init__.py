@@ -1,0 +1,1 @@
+"""BCG weekly monitoring automation."""

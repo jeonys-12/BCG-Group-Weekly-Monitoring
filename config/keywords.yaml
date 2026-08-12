@@ -1,0 +1,65 @@
+entities:
+  primary:
+    - BCG
+    - Bamboo Capital
+    - BCG Land
+    - BCR
+    - Sao Sang Sai Gon
+    - SSSG
+    - King Crown
+    - King Crown Thao Dien
+  key_people:
+    - Nguyen Ho Nam
+
+keyword_seeds:
+  financial:
+    - liquidity
+    - cash flow
+    - debt
+    - bond
+    - repayment
+    - default
+    - thanh khoan
+    - dong tien
+    - trai phieu
+  accounting:
+    - audit
+    - audited financial statements
+    - auditor
+    - kiem toan
+  regulatory:
+    - suspension
+    - delisting
+    - trading restriction
+    - administrative penalty
+    - dinh chi giao dich
+    - huy niem yet
+  investigation:
+    - investigation
+    - prosecution
+    - asset freeze
+    - dieu tra
+    - khoi to
+    - phong toa tai san
+  governance:
+    - chairman
+    - CEO
+    - CFO
+    - resignation
+    - appointment
+    - tu nhiem
+    - bo nhiem
+  restructuring:
+    - restructuring
+    - asset disposal
+    - stake sale
+    - strategic investor
+    - tai co cau
+    - chuyen nhuong tai san
+  hanwha_recovery:
+    - SSSG
+    - Sao Sang Sai Gon
+    - King Crown
+    - Thao Dien
+    - share transfer
+    - receivables

@@ -1,0 +1,23 @@
+[
+  {
+    "published_date": "2026-08-13",
+    "source": "HOSE",
+    "summary_ko": "BCG 관련 공시 테스트 자료 1",
+    "note": "",
+    "url": "https://example.invalid/disclosure-1"
+  },
+  {
+    "published_date": "2026-08-14",
+    "source": "HNX",
+    "summary_ko": "BCG Land 관련 공시 테스트 자료 2",
+    "note": "유동성 관련 사실 확인 필요",
+    "url": "https://example.invalid/disclosure-2"
+  },
+  {
+    "published_date": "2026-08-15",
+    "source": "SSC",
+    "summary_ko": "SSSG 관련 공시 테스트 자료 3",
+    "note": "SSSG 관련",
+    "url": "https://example.invalid/disclosure-3"
+  }
+]

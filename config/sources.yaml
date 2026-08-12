@@ -1,0 +1,21 @@
+http:
+  user_agent: "BCG-Weekly-Monitor/0.2 (+internal compliance monitoring)"
+  connect_timeout_seconds: 10
+  read_timeout_seconds: 30
+  max_retries: 2
+  min_request_interval_seconds: 1.0
+
+archive_root: data/raw
+
+sources:
+  bcg_ir:
+    enabled: true
+    base_url: "https://bamboocap.com.vn"
+    disclosure_url_template: "https://bamboocap.com.vn/quan-he-nha-dau-tu/cong-bo-thong-tin/{year}"
+    max_pages: 10
+  bcg_land_ir:
+    enabled: true
+    base_url: "https://www.bcgland.com.vn"
+    disclosure_url: "https://www.bcgland.com.vn/vi/quan-he-dau-tu/cong-bo-thong-tin"
+    disclosure_year_url_template: "https://www.bcgland.com.vn/vi/quan-he-dau-tu/cong-bo-thong-tin/{year}"
+    max_pages: 10

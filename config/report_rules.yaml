@@ -1,0 +1,15 @@
+sheet_name: "BCG 동향"
+columns:
+  date: A
+  source: B
+  summary: C
+  note: D
+section_labels:
+  trend: "1) BCG 그룹 동향"
+  impact: "2) 영향도 분석"
+institution_markers:
+  - HNX
+  - HOSE
+  - SSC
+report_date_cell: D2
+report_date_format: "%Y-%m-%d → %Y-%m-%d"
